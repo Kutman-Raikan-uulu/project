@@ -1,9 +1,12 @@
 import React from "react";
-import What from "./What/What";
 import classes from "./Content.module.css";
 
 function Content(props) {
-  return <div className={classes} />;
+  return (
+    <div className={classes.Content}>
+      <button onMouseDown={this.randomItem} />
+    </div>
+  );
 }
 
 export default Content;
