@@ -12,6 +12,8 @@ At the beginning of the game, each player in the center of the field sets two of
 
 Having determined the order, the players take turns placing their chips on the field, but in such a way that between the newly placed chip and one of the chips already on the board of the same color were either one or a continuous row of opponent's chips (horizontal, vertical or diagonal). That is, in other words, the player must close the row of opponent's chips from both sides with his chips. After this move, all opponent's chips in the closed row turn over to the other side and go to the player who has walked.
 
+![alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb3kFu2HH-n0uFleg-lp08HESB-MHIrLV68O9aE21t1hoQp94v8Q)
+
 If a player manages to close several rows at once (fork) at his own speed, then the opponent’s chips turn over respectively in two rows as well. No idle is allowed in the game. At each move, you need to surround at least one opponent's chip, but if there is no such situation on the field, the player skips the turn.
 
 The game stops when all the chips are displayed on the board. After counting the chips, the player who has more chips on the field is declared the winner. If the number of chips is the same, a draw is declared.
