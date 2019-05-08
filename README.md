@@ -1,3 +1,5 @@
-Reversi is a strategy board game for two players, played on an 8×8 uncheckered board. There are 64 identical game pieces called disks, which are light on one side and dark on the other. Players take turns placing discs on the board with their assigned color facing up. During a play, any discs of the opponent's color that are in a straight line and bounded by the disc just placed and another disc of the current player's color are turned over to the current player's color. The object of the game is to have the majority of discs turned to display your color when the last playable empty square is filled. Reversi is marketed by Pressman under the trade name Othello.
+<h1>Reversi</h1>
 
-![alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpaSBcp4vb0NEtMrlO7Swj6brOcTMH9IcAJJFi3mV4bJIKP4nR)
+The goal of the game is to capture with your chips the maximum area of ​​the playing field, closing and turning over the opponent's chips.
+
+Chips painted from two sides are divided between players. Everyone plays with his color throughout the game, that is, the chip puts on the field with its color top.
