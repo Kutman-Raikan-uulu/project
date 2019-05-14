@@ -1,37 +1,57 @@
-import React from "react";
+import React, { Component } from "react";
+import Game from "./Game/Game";
+import GameOver from "./GameOver/GameOver";
 import "./App.css";
-import Content from "./Content/Content";
 
-function App() {
-  return (
-    <div className="App">
-      <Content value="1" />
-      <Content value="2" />
-      <Content value="3" />
-      <Content value="4" />
-      <Content value="5" />
-      <Content value="6" />
-      <Content value="7" />
-      <Content value="8" />
-      <Content value="9" />
-      <Content value="10" />
-      <Content value="11" />
-      <Content value="12" />
-      <Content value="13" />
-      <Content value="14" />
-      <Content value="15" />
-      <Content value="16" />
-      <Content value="17" />
-      <Content value="18" />
-      <Content value="19" />
-      <Content value="20" />
-      <Content value="21" />
-      <Content value="22" />
-      <Content value="23" />
-      <Content value="24" />
-      <Content value="25" />
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      status: "active",
+      winner: null,
+      whiteScore: 0,
+      blackScore: 0
+    };
+  }
+
+  render() {
+    let game =
+      this.state.status === "active" ? (
+        <Game end={this.endGame.bind(this)} />
+      ) : (
+        ""
+      );
+    let gameOver =
+      this.state.status === "over" ? (
+        <GameOver
+          
+        />
+      ) : (
+        ""
+      );
+
+    return (
+      <div className="App">
+        {game}
+        {gameOver}
+      </div>
+    );
+  }
+
+  restartGame() {
+    this.setState({
+      status: "active"
+    });
+  }
+
+  endGame(winner, whiteScore, blackScore) {
+    this.setState({
+      status: "over",
+      winner,
+      whiteScore,
+      blackScore
+    });
+  }
 }
 
 export default App;
