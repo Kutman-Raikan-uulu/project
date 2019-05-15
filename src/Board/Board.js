@@ -22,7 +22,7 @@ class Board extends Component {
         key={y}
         data={cell}
         newest={this.props.newest}
-        reverse={this.props.reverse}
+        // reverse={this.props.reverse}
         player={this.props.player}
         position={[x, y]}
       />

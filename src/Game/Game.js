@@ -22,9 +22,9 @@ class Game extends Component {
     };
   }
 
-  componentDidMount() {
-    this.calculateAllowedCells();
-  }
+  // componentDidMount() {
+  //   this.calculateAllowedCells();
+  // }
 
   render() {
     return (
@@ -35,7 +35,6 @@ class Game extends Component {
           <Board
             board={this.state.board}
             newest={this.state.newestDisk}
-            reverse={this.reverse.bind(this)}
             player={this.state.currentPlayer}
           />
         </div>
@@ -60,26 +59,26 @@ class Game extends Component {
     return <h4>{this.opponent()} lost his turn</h4>;
   }
 
-  calculateAllowedCells() {
-    var b = this.state.board;
-    var allowedCellsCount = 0;
-    var canReverse;
+  // calculateAllowedCells() {
+  //   var b = this.state.board;
+  //   var allowedCellsCount = 0;
+  //   var canReverse;
 
-    for (let x = 0; x < 8; x++) {
-      for (let y = 0; y < 8; y++) {
-        canReverse = this.canReverse(x, y);
-        b[x][y].canReverse = canReverse;
+  //   for (let x = 0; x < 8; x++) {
+  //     for (let y = 0; y < 8; y++) {
+  //       canReverse = this.canReverse(x, y);
+  //       b[x][y].canReverse = canReverse;
 
-        if (canReverse.length) allowedCellsCount++;
-      }
-    }
+  //       if (canReverse.length) allowedCellsCount++;
+  //     }
+  //   }
 
-    this.setState({
-      board: b
-    });
+  //   this.setState({
+  //     board: b
+  //   });
 
-    return allowedCellsCount;
-  }
+  //   return allowedCellsCount;
+  // }
 
   /** create the initial board state */
   createBoard() {
@@ -108,120 +107,120 @@ class Game extends Component {
     return null;
   }
 
-  canReverse(x, y) {
-    var canReverse = [];
-    var b = this.state.board;
-    var X, Y, distance, cells;
+  // canReverse(x, y) {
+  //   var canReverse = [];
+  //   var b = this.state.board;
+  //   var X, Y, distance, cells;
 
-    // cell is already occupied
-    if (b[x][y].disk) return [];
+  //   // cell is already occupied
+  //   if (b[x][y].disk) return [];
 
-    directions.forEach(dir => {
-      distance = 0;
-      X = x;
-      Y = y;
-      cells = [];
+  //   directions.forEach(dir => {
+  //     distance = 0;
+  //     X = x;
+  //     Y = y;
+  //     cells = [];
 
-      do {
-        X += dir[0];
-        Y += dir[1];
-        cells.push({ X, Y });
-        distance++;
-      } while (this.inBoard(X, Y) && this.hasOpponentsColor(X, Y));
+  //     do {
+  //       X += dir[0];
+  //       Y += dir[1];
+  //       cells.push({ X, Y });
+  //       distance++;
+  //     } while (this.inBoard(X, Y) && this.hasOpponentsColor(X, Y));
 
-      if (
-        distance >= 2 &&
-        this.inBoard(X, Y) &&
-        b[X][Y].disk === this.state.currentPlayer
-      ) {
-        canReverse.push(cells);
-      }
-    });
+  //     if (
+  //       distance >= 2 &&
+  //       this.inBoard(X, Y) &&
+  //       b[X][Y].disk === this.state.currentPlayer
+  //     ) {
+  //       canReverse.push(cells);
+  //     }
+  //   });
 
-    return [].concat.apply([], canReverse);
-  }
+  //   return [].concat.apply([], canReverse);
+  // }
 
-  inBoard(x, y) {
-    return x >= 0 && x <= 7 && y >= 0 && y <= 7;
-  }
+  // inBoard(x, y) {
+  //   return x >= 0 && x <= 7 && y >= 0 && y <= 7;
+  // }
 
-  hasOpponentsColor(x, y) {
-    return this.state.board[x][y].disk === this.opponent();
-  }
+  // hasOpponentsColor(x, y) {
+  //   return this.state.board[x][y].disk === this.opponent();
+  // }
 
-  opponent() {
-    return this.state.currentPlayer === "white" ? "black" : "white";
-  }
+  // opponent() {
+  //   return this.state.currentPlayer === "white" ? "black" : "white";
+  // }
 
-  reverse(x, y) {
-    var b = this.state.board;
+  // reverse(x, y) {
+  //   var b = this.state.board;
 
-    if (!b[x][y].canReverse || !b[x][y].canReverse.length) return;
+  //   if (!b[x][y].canReverse || !b[x][y].canReverse.length) return;
 
-    b[x][y].disk = this.state.currentPlayer;
-    b[x][y].canReverse.forEach(
-      cell => (b[cell.X][cell.Y].disk = this.state.currentPlayer)
-    );
+  //   b[x][y].disk = this.state.currentPlayer;
+  //   b[x][y].canReverse.forEach(
+  //     cell => (b[cell.X][cell.Y].disk = this.state.currentPlayer)
+  //   );
 
-    this.setState(
-      {
-        board: b,
-        newestDisk: [x, y]
-      },
-      () => {
-        this.setState(
-          prevState => {
-            return {
-              currentPlayer:
-                prevState.currentPlayer === "white" ? "black" : "white"
-            };
-          },
-          () => {
-            var allowedCellsCount = this.calculateAllowedCells();
+  //   this.setState(
+  //     {
+  //       board: b,
+  //       newestDisk: [x, y]
+  //     },
+  //     () => {
+  //       this.setState(
+  //         prevState => {
+  //           return {
+  //             currentPlayer:
+  //               prevState.currentPlayer === "white" ? "black" : "white"
+  //           };
+  //         },
+  //         () => {
+  //           var allowedCellsCount = this.calculateAllowedCells();
 
-            if (!allowedCellsCount) {
-              // PLAYER HAS NO MOVES
+  //           if (!allowedCellsCount) {
+  //             // PLAYER HAS NO MOVES
 
-              this.setState(
-                prevState => {
-                  return {
-                    currentPlayer:
-                      prevState.currentPlayer === "white" ? "black" : "white"
-                  };
-                },
-                () => {
-                  allowedCellsCount = this.calculateAllowedCells();
-                  if (!allowedCellsCount) {
-                    // BOTH PLAYERS HAVE NO MOVES: GAME OVER
-                    this.props.end(
-                      this.winner(),
-                      this.score("white"),
-                      this.score("black")
-                    );
-                  }
-                }
-              );
-            }
-          }
-        );
-      }
-    );
-  }
+  //             this.setState(
+  //               prevState => {
+  //                 return {
+  //                   currentPlayer:
+  //                     prevState.currentPlayer === "white" ? "black" : "white"
+  //                 };
+  //               },
+  //               () => {
+  //                 allowedCellsCount = this.calculateAllowedCells();
+  //                 if (!allowedCellsCount) {
+  //                   // BOTH PLAYERS HAVE NO MOVES: GAME OVER
+  //                   this.props.end(
+  //                     this.winner(),
+  //                     this.score("white"),
+  //                     this.score("black")
+  //                   );
+  //                 }
+  //               }
+  //             );
+  //           }
+  //         }
+  //       );
+  //     }
+  //   );
+  // }
 
-  getCurrentPlayer() {
-    // check whether to opponent has any moves. Count only, without assigning the actual cells
-    var allowedCellsCount = this.calculateAllowedCells();
+  // getCurrentPlayer() {
+  //   // check whether to opponent has any moves. Count only, without assigning the actual cells
+  //   var allowedCellsCount = this.calculateAllowedCells();
 
-    if (!allowedCellsCount) {
-      this.setState({
-        lostTurn: true
-      });
+  //   if (!allowedCellsCount) {
+  //     this.setState({
+  //       lostTurn: true
+  //     });
 
-      return this.state.currentPlayer;
-    }
+  //     return this.state.currentPlayer;
+  //   }
 
-    return this.state.currentPlayer === "white" ? "black" : "white";
-  }
+  //   return this.state.currentPlayer === "white" ? "black" : "white";
+  // }
 }
 
 export default Game;
