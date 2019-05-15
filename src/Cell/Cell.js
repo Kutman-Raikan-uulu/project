@@ -27,7 +27,7 @@ class Cell extends Component {
 
   classes() {
     let cls = "Cell ";
-    let cell = this.props.data;
+    // let cell = this.props.data;
     // cls += cell.disk ? "Cell--occupied" : "Cell--vacant";
     // if (cell.canReverse.length) cls += " Cell--allowed";
     // if (this.isNewest()) cls += " Cell--newest";

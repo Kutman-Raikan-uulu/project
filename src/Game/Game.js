@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import Board from "../Board/Board";
 import "./Game.css";
 
-const directions = [
-  [0, 1], // right
-  [0, -1], // left
-  [-1, 0], // up
-  [1, 0] // down
-];
+var colors = ["red", "orange", "yellow", "green", "blue", "violet"];
+
+function State(init) {
+  init = init || {};
+  this.currentColor = init.currentColor || 0;
+}
+State.prototype.getBackGroundColor = function() {
+  return colors[this.currentColor];
+};
 
 class Game extends Component {
   constructor(props) {
@@ -15,7 +18,6 @@ class Game extends Component {
 
     this.state = {
       board: this.createBoard(),
-      currentPlayer: "white",
       winner: null,
       lostTurn: false,
       newestDisk: null
@@ -29,7 +31,6 @@ class Game extends Component {
   render() {
     return (
       <div className="Game container">
-        <h3 className="Game--title">{this.state.currentPlayer}'s turn</h3>
         {this.lostTurn()}
         <div className="row">
           <Board
@@ -91,21 +92,26 @@ class Game extends Component {
       for (let y = 0; y < board[x].length; y++) {
         board[x][y] = {
           id: rowPos + (y + 1),
-          disk: this.initialDisk(x + 1, y + 1),
-          canReverse: []
+          // disk: this.initialDisk(x + 1, y + 1),
+
+          color: Math.floor(Math.random() * colors.length)
         };
       }
     }
+    board[0][0].isCaught = true;
 
     return board;
   }
 
-  /** set initial disks black: black at 4,4;5,5; white at 4,5; 5,4; */
-  initialDisk(x, y) {
-    if ((x === 4 && y === 4) || (x === 5 && y === 5)) return "black";
-    if ((x === 4 && y === 5) || (x === 5 && y === 4)) return "white";
-    return null;
+  getElementColor(x, y) {
+    return colors[board[x][y].color];
   }
+  /** set initial disks black: black at 4,4;5,5; white at 4,5; 5,4; */
+  // initialDisk(x, y) {
+  //   if ((x === 4 && y === 4) || (x === 5 && y === 5)) return "black";
+  //   if ((x === 4 && y === 5) || (x === 5 && y === 4)) return "white";
+  //   return null;
+  // }
 
   // canReverse(x, y) {
   //   var canReverse = [];

@@ -19,6 +19,6 @@
   cursor: pointer !important;
 }
 
-.Cell.Cell--allowed:hover {
+.Cell:hover {
   background: #54af2f;
 }
