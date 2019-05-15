@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Board from "../Board/Board";
+import "./Game.css";
 
 const directions = [
   [0, 1], // right

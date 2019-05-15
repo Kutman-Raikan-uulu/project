@@ -1,0 +1,14 @@
+.Game--title {
+  padding: 10px;
+}
+
+.Game--title:first-letter {
+  text-transform: capitalize;
+}
+
+.Game .row {
+  display: flex;
+  width: 512px;
+  justify-content: center;
+  align-items: center;
+}
