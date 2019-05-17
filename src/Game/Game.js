@@ -43,8 +43,52 @@ class Game extends Component {
       }
     }
     board[0][0].isCaught = true;
+    this.catchNew(board[0][0].color);
 
     return board;
+  }
+  catchNew(newColor) {
+    let dimension = 8;
+    for (var i = 0; i < dimension; i++) {
+      for (var j = 0; j < dimension; j++) {
+        if (board[x][y].isCaught) {
+          if (i > 0) {
+            var up = board[i - 1][j];
+            if (up.color === newColor) {
+              up.isCaught = true;
+            }
+          }
+          if (i < dimension - 1) {
+            var down = board[x + 1][y];
+            if (down.color == newColor) {
+              down.isCaught = true;
+            }
+          }
+          if (j > 0) {
+            var left = board[x][y - 1];
+            if (left.color == newColor) {
+              left.isCaught = true;
+            }
+          }
+          if (j < 8 - 1) {
+            var right = board[x][y + 1];
+            if (right.color == newColor) {
+              right.isCaught = true;
+            }
+          }
+          board[x][y].color = newColor;
+        }
+      }
+    }
+    var caughtElements = board.reduce(function(sum, row) {
+      return (
+        sum +
+        row.reduce(function(sum, item) {
+          return sum + (item.isCaught ? 1 : 0);
+        }, 0)
+      );
+    }, 0);
+    return caughtElements;
   }
 }
 
