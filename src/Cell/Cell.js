@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Cell.css";
 
+// let cells = <div />;
+
 class Cell extends Component {
   constructor(props) {
     super(props);
@@ -9,10 +11,31 @@ class Cell extends Component {
     };
   }
 
-  render() {
-    return <td className={this.classes()}>{this.randomColor()}</td>;
-  }
+  // randomCellColor = () => {
+  //   x += 1;
+  //   if (x <= 64) {
+  //     let color = (Math.random() * colors.length + 0).toFixed(0);
+  //     cells.append(
+  //       <td
+  //        style={{ backgroundColor: colors[color] }}
+  //         className={this.classes()}
+  //       />
+  //     );
+  //     this.randomCellColor();
+  //   } else return;
+  // };
 
+  render() {
+    let colors = ["red", "orange", "yellow", "green", "blue", "violet"];
+
+    let color = (Math.random() * colors.length).toFixed();
+    console.log(color);
+    return (
+      <td style={{ backgroundColor: colors[color] }} className={this.classes()}>
+        {this.randomColor()}
+      </td>
+    );
+  }
   randomColor() {
     return <div />;
   }
