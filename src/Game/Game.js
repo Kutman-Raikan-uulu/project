@@ -44,35 +44,37 @@ class Game extends Component {
     }
     board[0][0].isCaught = true;
     this.catchNew(board[0][0].color);
-
     return board;
   }
-  catchNew(newColor) {
-    let dimension = 8;
-    for (var i = 0; i < dimension; i++) {
-      for (var j = 0; j < dimension; j++) {
+  catchNew = () => {
+    G;
+    const dimension = 8;
+    let board = this.props.board;
+    let newColor = this.style;
+    for (var x = 0; x < dimension; x++) {
+      for (var y = 0; y < dimension; y++) {
         if (board[x][y].isCaught) {
-          if (i > 0) {
-            var up = board[i - 1][j];
+          if (x > 0) {
+            var up = board[x - 1][y];
             if (up.color === newColor) {
               up.isCaught = true;
             }
           }
-          if (i < dimension - 1) {
+          if (x < dimension - 1) {
             var down = board[x + 1][y];
-            if (down.color == newColor) {
+            if (down.color === newColor) {
               down.isCaught = true;
             }
           }
-          if (j > 0) {
+          if (y > 0) {
             var left = board[x][y - 1];
-            if (left.color == newColor) {
+            if (left.color === newColor) {
               left.isCaught = true;
             }
           }
-          if (j < 8 - 1) {
+          if (y < dimension - 1) {
             var right = board[x][y + 1];
-            if (right.color == newColor) {
+            if (right.color === newColor) {
               right.isCaught = true;
             }
           }
@@ -89,7 +91,7 @@ class Game extends Component {
       );
     }, 0);
     return caughtElements;
-  }
+  };
 }
 
 export default Game;
