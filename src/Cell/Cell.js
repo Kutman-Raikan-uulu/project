@@ -31,11 +31,7 @@ class Cell extends Component {
     let color = (Math.random() * (colors.length - 1)).toFixed();
     console.log(color);
     return (
-      <td
-        style={{ backgroundColor: colors[color] }}
-        className={this.classes()}
-        onClick={_ => this.catchNew()}
-      >
+      <td style={{ backgroundColor: colors[color] }} className={this.classes()}>
         {this.randomColor()}
       </td>
     );
