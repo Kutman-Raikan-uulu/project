@@ -17,6 +17,32 @@ class Game extends Component {
     return (
       <div className="Game container">
         <div className="row">
+          <div className="button">
+            <button
+              onClick={_ => this.catchNew()}
+              style={{ backgroundColor: "red" }}
+            />
+            <button
+              onClick={_ => this.catchNew()}
+              style={{ backgroundColor: "blue" }}
+            />
+            <button
+              onClick={_ => this.catchNew()}
+              style={{ backgroundColor: "violet" }}
+            />
+            <button
+              onClick={_ => this.catchNew()}
+              style={{ backgroundColor: "green" }}
+            />
+            <button
+              onClick={_ => this.catchNew()}
+              style={{ backgroundColor: "orange" }}
+            />
+            <button
+              onClick={_ => this.catchNew()}
+              style={{ backgroundColor: "yellow" }}
+            />
+          </div>
           <Board
             board={this.state.board}
             newest={this.state.newestDisk}
@@ -26,6 +52,10 @@ class Game extends Component {
       </div>
     );
   }
+  newColor = board => {
+    let backgroundColor = this.props.button.style;
+    board.style = backgroundColor;
+  };
 
   /** create the initial board state */
   createBoard() {
@@ -43,14 +73,13 @@ class Game extends Component {
       }
     }
     board[0][0].isCaught = true;
-    this.catchNew(board[0][0].color);
+
     return board;
   }
-  catchNew = () => {
-    G;
+  catchNew = newColor => {
     const dimension = 8;
     let board = this.props.board;
-    let newColor = this.style;
+
     for (var x = 0; x < dimension; x++) {
       for (var y = 0; y < dimension; y++) {
         if (board[x][y].isCaught) {
