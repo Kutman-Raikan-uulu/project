@@ -12,3 +12,12 @@
   justify-content: center;
   align-items: center;
 }
+.button {
+  width: 150px;
+}
+.button button {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  padding: 10px;
+}
