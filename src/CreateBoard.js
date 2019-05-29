@@ -17,5 +17,4 @@ function tileColor(colorCount) {
   };
 }
 
-
 export default CreateBoard;
