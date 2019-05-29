@@ -20,4 +20,21 @@
 
 .playingfield {
   position: relative;
+  height: 450px;
+}
+@media (min-width: 450px) {
+  .game {
+    width: 450px;
+  }
+}
+@media (max-width: 449px) {
+  .game {
+    width: 95%;
+  }
+}
+
+@media (min-height: 1000px) {
+  .game {
+    height: 1000px;
+  }
 }

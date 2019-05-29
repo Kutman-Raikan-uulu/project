@@ -3,7 +3,6 @@
   position: relative;
   height: 450px;
   width: 100%;
-  grid-template-columns: 1fr;
 }
 
 .line {

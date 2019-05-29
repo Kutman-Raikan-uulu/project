@@ -6,7 +6,7 @@ import "./Board.css";
 
 const Board = ({ board, colors }) => {
   return (
-    <div className="board" key="board">
+    <div className="Board" key="board">
       {board.map(line => {
         return (
           <ul className={`line`} key={shortId.generate()}>
