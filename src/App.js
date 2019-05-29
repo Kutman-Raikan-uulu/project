@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import MakeMove from "./MakeMove";
-import ButtonRow from "./ButtonRow";
+import ButtonRow from "./ButtonRow/ButtonRow";
 import Board from "./Board/Board";
-import Settings from "./Settings";
+import Settings from "./Setting/Settings";
 import RestartGame from "./RestartGame";
 
 class App extends Component {

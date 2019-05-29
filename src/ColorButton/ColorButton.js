@@ -1,5 +1,5 @@
 import React from "react";
-import Tile from "./Board/Tile";
+import Tile from "../Board/Tile";
 import "./ColorButton.css";
 
 const ColorButton = ({

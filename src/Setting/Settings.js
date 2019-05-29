@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import StdButton from "./StdButton";
-import ColorButton from "./ColorButton";
+import StdButton from "../StdButton/StdButton";
+import ColorButton from "../ColorButton/ColorButton";
 import InputRange from "react-input-range";
 import "./Setting.css";
 
