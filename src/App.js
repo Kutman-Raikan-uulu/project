@@ -1,56 +1,63 @@
 import React, { Component } from "react";
-import Game from "./Game/Game";
-import GameOver from "./GameOver/GameOver";
 import "./App.css";
+import MakeMove from "./MakeMove";
+import ButtonRow from "./ButtonRow";
+import Board from "./Board/Board";
+import Settings from "./Settings";
+import RestartGame from "./RestartGame";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      status: "active",
-      winner: null,
-      whiteScore: 0,
-      blackScore: 0
-    };
+
+    this.restartClick = this.restartClick.bind(this);
+    this.buttonClick = this.buttonClick.bind(this);
+    this.saveClick = this.saveClick.bind(this);
+    this.state = {};
   }
+
+  componentDidMount() {
+    const newState = RestartGame();
+    this.setState(newState);
+  }
+
+  settingsClick = state => {
+    state.showSettings = state.showSettings ? false : true;
+    this.setState(state);
+  };
+
+  buttonClick = (color, state) => {
+    if (state.winner === false) this.setState(MakeMove(color, state));
+  };
+
+  restartClick = state => {
+    this.setState(RestartGame(state));
+  };
+
+  saveClick = newState => {
+    this.setState(RestartGame(newState));
+  };
 
   render() {
-    let game =
-      this.state.status === "active" ? (
-        <Game end={this.endGame.bind(this)} />
-      ) : (
-        ""
-      );
-    let gameOver =
-      this.state.status === "over" ? (
-        <GameOver
-          
-        />
-      ) : (
-        ""
-      );
+    if (this.state.board === undefined) {
+      return <p>Loading..</p>;
+    }
+
+    let board = this.state.showSettings ? (
+      <Settings state={this.state} save={this.saveClick} />
+    ) : (
+      <Board
+        board={this.state.board}
+        colors={this.state.colorTemplates[this.state.chosenColor]}
+      />
+    );
 
     return (
-      <div className="App">
-        {game}
-        {gameOver}
+      <div className="game">
+        <div className="playingfield">{board}</div>
+        <ButtonRow state={this.state} click={this.buttonClick} />
       </div>
     );
-  }
-
-  restartGame() {
-    this.setState({
-      status: "active"
-    });
-  }
-
-  endGame(winner, whiteScore, blackScore) {
-    this.setState({
-      status: "over",
-      winner,
-      whiteScore,
-      blackScore
-    });
   }
 }
 

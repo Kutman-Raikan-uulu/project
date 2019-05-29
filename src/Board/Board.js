@@ -1,33 +1,30 @@
-import React, { Component } from "react";
-import Cell from "../Cell/Cell";
+import React from "react";
+import shortId from "shortid";
+import PropTypes from "prop-types";
+import Tile from "./Tile";
+import "./Board.css";
 
-class Board extends Component {
-  render() {
-    return (
-      <div className="Board">
-        <table className="table table-bordered">
-          <tbody>
-            {this.props.board.map((row, x) => (
-              <tr key={x}>{this.renderRow(row, x)}</tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+const Board = ({ board, colors }) => {
+  return (
+    <div className="board" key="board">
+      {board.map(line => {
+        return (
+          <ul className={`line`} key={shortId.generate()}>
+            {line.map(cell => {
+              return (
+                <Tile color={colors[cell.color]} key={shortId.generate()} />
+              );
+            })}
+          </ul>
+        );
+      })}
+    </div>
+  );
+};
 
-  renderRow(row, x) {
-    return row.map((cell, y) => (
-      <Cell
-        key={y}
-        data={cell}
-        newest={this.props.newest}
-        // reverse={this.props.reverse}
-        player={this.props.player}
-        position={[x, y]}
-      />
-    ));
-  }
-}
+Board.propTypes = {
+  board: PropTypes.array.isRequired,
+  colors: PropTypes.array.isRequired
+};
 
 export default Board;

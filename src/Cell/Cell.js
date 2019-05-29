@@ -29,7 +29,7 @@ class Cell extends Component {
     let colors = ["red", "orange", "yellow", "green", "blue", "violet"];
 
     let color = (Math.random() * (colors.length - 1)).toFixed();
-    console.log(color);
+    console.log(colors[color]);
     return (
       <td style={{ backgroundColor: colors[color] }} className={this.classes()}>
         {this.randomColor()}
@@ -37,7 +37,7 @@ class Cell extends Component {
     );
   }
   randomColor() {
-    return <div style={{ backgroundColor: this.color }} />;
+    return <div />;
   }
 
   // isNewest() {
@@ -94,31 +94,12 @@ class Cell extends Component {
   };
   classes() {
     let cls = "Cell ";
-    // let cell = this.props.data;
-    // cls += cell.disk ? "Cell--occupied" : "Cell--vacant";
-    // if (cell.canReverse.length) cls += " Cell--allowed";
-    // if (this.isNewest()) cls += " Cell--newest";
+    let cell = this.props.data;
+    console.log(cell);
+    cls += cell.disk ? "Cell--occupied" : "Cell--vacant";
 
     return cls;
   }
-
-  // diskColor() {
-  //   var cell = this.props.data;
-
-  //   if (cell.disk) return cell.disk;
-
-  //   if (this.state.hovered) return this.props.player;
-
-  //   return null;
-  // }
-
-  // reverse() {
-  //   if (this.props.data.canReverse.length === 0) return;
-
-  //   var x = this.props.position[0];
-  //   var y = this.props.position[1];
-  //   this.props.reverse(x, y);
-  // }
 }
 
 export default Cell;

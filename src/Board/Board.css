@@ -1,7 +1,14 @@
 .Board {
-  margin: 0 auto;
+  display: grid;
+  position: relative;
+  height: 450px;
+  width: 100%;
+  grid-template-columns: 1fr;
 }
 
-.Board table {
-  background: #54af45;
+.line {
+  display: grid;
+  grid-auto-flow: column;
+  padding: 0px;
+  font-size: 0px;
 }
