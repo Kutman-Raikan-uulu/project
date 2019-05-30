@@ -48,37 +48,7 @@ export default class Settings extends Component {
                 1
               )}
             />
-            <ColorButton
-              text=""
-              toggle={this.state.chosenColor === 0 ? true : false}
-              colors={this.state.colorTemplates[0]}
-              click={this.updateSetting.bind(
-                null,
-                this.state,
-                "chosenColor",
-                0
-              )}
-            />
           </div>
-        </div>
-
-        <div className="colorCount">
-          <div className="colorCountHeader">COLOR COUNT</div>
-          <div className="colorCountRange">
-            <InputRange
-              maxValue={7}
-              minValue={3}
-              value={this.state.colorCount}
-              onChange={value => this.setState({ colorCount: value })}
-            />
-          </div>
-        </div>
-
-        <div className="save columns">
-          <StdButton
-            text="SAVE"
-            click={this.saveClick.bind(null, this.state)}
-          />
         </div>
       </div>
     );

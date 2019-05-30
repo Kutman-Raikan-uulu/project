@@ -28,6 +28,7 @@ class App extends Component {
 
   buttonClick = (color, state) => {
     if (state.winner === false) this.setState(MakeMove(color, state));
+    console.log(this.state.winner);
   };
 
   restartClick = state => {

@@ -6,6 +6,7 @@ function InitialState() {
     maxTurns: 0,
     showSettings: true,
     boardSize: 5,
+
     colorTemplates: [
       ["red", "blue", "orange", "purple", "yellow", "brown", "green"],
       [
@@ -20,7 +21,8 @@ function InitialState() {
     ],
     chosenColor: 1,
     colorCount: 5,
-    difficulty: 3
+
+    difficulty: 4
   };
 }
 
