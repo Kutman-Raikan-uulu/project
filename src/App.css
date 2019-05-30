@@ -1,11 +1,3 @@
-.App {
-  text-align: center;
-  background: #ccc;
-  min-width: 800px;
-  min-height: 500px;
-  align-items: center;
-  justify-content: center;
-}
 .game {
   display: grid;
   border: none;
@@ -20,8 +12,8 @@
 
 .playingfield {
   position: relative;
-  height: 450px;
 }
+
 @media (min-width: 450px) {
   .game {
     width: 450px;

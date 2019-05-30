@@ -5,6 +5,7 @@ import ButtonRow from "./ButtonRow/ButtonRow";
 import Board from "./Board/Board";
 import Settings from "./Setting/Settings";
 import RestartGame from "./RestartGame";
+import TopMenu from "./TopMenu/TopMenu";
 
 class App extends Component {
   constructor(props) {
@@ -55,6 +56,11 @@ class App extends Component {
 
     return (
       <div className="game">
+        <TopMenu
+          state={this.state}
+          restart={this.restartClick}
+          // setting={this.settingsClick}
+        />
         <div className="playingfield">{board}</div>
         <ButtonRow state={this.state} click={this.buttonClick} />
       </div>
