@@ -10,7 +10,7 @@ export default function RestartGame(state = InitialState()) {
     state.colorCount
   );
   state.board[0][0].collected = true;
-  state.turn = 0;
+  state.turn = -1;
   state.showSettings = false;
   state.winner = false;
 

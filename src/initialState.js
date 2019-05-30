@@ -19,7 +19,7 @@ function InitialState() {
         "#29CCC0"
       ]
     ],
-    chosenColor: 1,
+    chosenColor: 0,
     colorCount: 5,
 
     difficulty: 4
