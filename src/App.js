@@ -6,6 +6,7 @@ import Board from "./Board/Board";
 import Settings from "./Setting/Settings";
 import RestartGame from "./RestartGame";
 import TopMenu from "./TopMenu/TopMenu";
+import Winner from "./Winner/Winner";
 
 class App extends Component {
   constructor(props) {
@@ -53,16 +54,21 @@ class App extends Component {
         colors={this.state.colorTemplates[this.state.chosenColor]}
       />
     );
+    let splash =
+      this.state.winner !== false ? (
+        <Winner state={this.state} restart={this.restartClick} />
+      ) : null;
 
     return (
-      <div className="game">
-        <TopMenu
-          state={this.state}
-          restart={this.restartClick}
-          // setting={this.settingsClick}
-        />
-        <div className="playingfield">{board}</div>
-        <ButtonRow state={this.state} click={this.buttonClick} />
+      <div className="App">
+        <div className="game">
+          <TopMenu state={this.state} restart={this.restartClick} />
+          <div className="playingfield">
+            {splash}
+            {board}
+          </div>
+          <ButtonRow state={this.state} click={this.buttonClick} />
+        </div>
       </div>
     );
   }

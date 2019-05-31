@@ -22,7 +22,7 @@ function InitialState() {
     chosenColor: 0,
     colorCount: 5,
 
-    difficulty: 4
+    difficulty: 3
   };
 }
 
